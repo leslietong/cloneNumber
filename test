@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title></title>
+    <meta name="description" content="Pagination">
+    <meta name="keywords" content="demo">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+</head>
+<body>
+    <div class="A B"></div>
+</body>
+    <script type="text/javascript">
+        //数字拷贝
+        var A = "123",
+            B = [];
+        for(var i = 0;i < A.length;i++){
+            for(var j = 0;j < i+1;j++) B.push(A.charAt(i));
+        }
+        console.log(B.join(''));
+
+        //实现在制定tag元素下查找class方法
+        function getElementsByClassName(tagName, className){
+            _className = className.split(' ');
+            _length = _className.length;
+            for(var i = 0; i < _length; i++){
+                //创建匹配类名的正则
+                _className[i]= new RegExp("(^|\\s)" + _className[i].replace(/\-/g, "\\-") + "(\\s|$)");
+            }
+            var _tagName = document.getElementsByTagName(tagName);
+            var result = [];
+            for(var i = 0,k = 0;i < _tagName.length;i++){
+                var _element = _tagName[i];
+                k++;
+                if(k === _length){
+                    result[result.length] = _element;
+                    break;
+                }
+                k = 0;
+            }
+            return result;
+        }
+        console.log(getElementsByClassName("div","A B"))
+    </script>
+
+</html>
